@@ -1,0 +1,8 @@
+export const TESTIMONIALS = [
+  { name: 'Sarah Chen', role: 'Head of Operations', company: 'Nexus Corp', rating: 5, review: 'FlowAI eliminated 80% of our manual data entry in the first week. The AI workflow builder is genuinely magical — it predicted the exact automation we needed before we even described it fully.' },
+  { name: 'Marcus Rodriguez', role: 'CTO', company: 'Orbital Labs', rating: 5, review: 'We evaluated 12 automation platforms. FlowAI was the only one that could handle our complex document processing pipeline without custom engineering. The ROI was visible in 72 hours.' },
+  { name: 'Priya Sharma', role: 'VP of Engineering', company: 'Synth AI', rating: 5, review: 'The enterprise security features gave us confidence to automate our compliance workflows. SOC 2 certified, and the audit logs are incredibly detailed. Our security team approved it in record time.' },
+  { name: 'James Liu', role: 'Director of Automation', company: 'Meridian', rating: 5, review: 'Predictive AI insights saved us from three critical workflow failures last quarter. It flagged issues 28 hours before they would have cascaded. The ROI on that alone justified the entire subscription.' },
+  { name: 'Elena Vasquez', role: 'Chief of Staff', company: 'Apex Flow', rating: 5, review: 'Our team went from spending 20 hours a week on manual reporting to zero. FlowAI connects to every tool we use and the collaboration features mean the whole team can iterate on workflows together.' },
+  { name: 'David Kim', role: 'Head of Product', company: 'Quantum IO', rating: 5, review: 'The 200+ integrations list is not marketing — every connector we tested worked perfectly on day one. The AI Knowledge Assistant has become our unofficial documentation system.' },
+];
