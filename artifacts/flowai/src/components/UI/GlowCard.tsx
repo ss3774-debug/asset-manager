@@ -14,22 +14,23 @@ export function GlowCard({
   ...props 
 }: GlowCardProps) {
   const glowStyles = {
-    blue: 'hover:shadow-[0_8px_40px_-12px_rgba(59,130,246,0.5)] hover:border-blue-500/30',
-    purple: 'hover:shadow-[0_8px_40px_-12px_rgba(139,92,246,0.5)] hover:border-violet-500/30',
-    emerald: 'hover:shadow-[0_8px_40px_-12px_rgba(16,185,129,0.5)] hover:border-emerald-500/30'
+    blue: 'hover:shadow-[0_8px_60px_-12px_rgba(59,130,246,0.5)] hover:border-blue-500/30',
+    purple: 'hover:shadow-[0_8px_60px_-12px_rgba(139,92,246,0.5)] hover:border-violet-500/30',
+    emerald: 'hover:shadow-[0_8px_60px_-12px_rgba(16,185,129,0.5)] hover:border-emerald-500/30'
   };
 
   const activeStyles = {
-    blue: 'shadow-[0_8px_40px_-12px_rgba(59,130,246,0.4)] border-blue-500/40 bg-blue-500/5',
-    purple: 'shadow-[0_8px_40px_-12px_rgba(139,92,246,0.4)] border-violet-500/40 bg-violet-500/5',
-    emerald: 'shadow-[0_8px_40px_-12px_rgba(16,185,129,0.4)] border-emerald-500/40 bg-emerald-500/5'
+    blue: 'shadow-[0_8px_60px_-12px_rgba(59,130,246,0.4)] border-blue-500/40 bg-blue-500/5',
+    purple: 'shadow-[0_8px_60px_-12px_rgba(139,92,246,0.4)] border-violet-500/40 bg-violet-500/5',
+    emerald: 'shadow-[0_8px_60px_-12px_rgba(16,185,129,0.4)] border-emerald-500/40 bg-emerald-500/5'
   };
 
   return (
     <div 
-      className={`glass-card relative overflow-hidden group ${glowStyles[glowColor]} ${active ? activeStyles[glowColor] : ''} ${className}`}
+      className={`glass-card relative overflow-hidden group transition-all duration-300 hover:-translate-y-1.5 ${glowStyles[glowColor]} ${active ? activeStyles[glowColor] : ''} ${className}`}
       {...props}
     >
+      <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br ${
         glowColor === 'blue' ? 'from-blue-500/10' : 
         glowColor === 'purple' ? 'from-violet-500/10' : 

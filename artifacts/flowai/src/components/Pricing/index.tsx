@@ -10,15 +10,16 @@ interface PricingCardProps {
   billingCycle: BillingCycle;
   popular?: boolean;
   features: string[];
+  description: string;
 }
 
-const PricingCard = React.memo(({ name, price, currency, billingCycle, popular, features }: PricingCardProps) => {
+const PricingCard = React.memo(({ name, price, currency, billingCycle, popular, features, description }: PricingCardProps) => {
   const symbol = CURRENCY_SYMBOLS[currency];
   
-  return (
+  const CardContent = (
     <GlowCard 
       glowColor={popular ? 'blue' : 'purple'} 
-      className={`p-8 flex flex-col ${popular ? 'border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.15)] scale-105 z-10' : 'border-white/10'}`}
+      className={`p-8 flex flex-col h-full bg-[#0a0f25]/40 border-white/[0.08] ${popular ? 'z-10' : ''}`}
     >
       {popular && (
         <div className="absolute top-0 right-8 transform -translate-y-1/2">
@@ -29,11 +30,15 @@ const PricingCard = React.memo(({ name, price, currency, billingCycle, popular, 
       )}
       
       <h3 className="text-xl font-medium text-white mb-2">{name}</h3>
+      <p className="text-sm text-gray-400 mb-6 min-h-[40px]">{description}</p>
+      
       <div className="mb-6">
         <span className="text-4xl font-bold text-white">{symbol}{price}</span>
         <span className="text-gray-400 ml-2">/mo</span>
         {billingCycle === 'annual' && (
-          <div className="text-xs text-emerald-400 mt-1 font-medium">Billed annually</div>
+          <div className="text-xs text-emerald-400 mt-2 font-medium">
+            {symbol}{Math.floor(price * 12)} / year · 20% off
+          </div>
         )}
       </div>
       
@@ -54,10 +59,27 @@ const PricingCard = React.memo(({ name, price, currency, billingCycle, popular, 
         variant={popular ? 'primary' : 'outline'} 
         className="w-full"
       >
-        Get Started
+        {name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
       </Button>
+      {name === 'Enterprise' && (
+        <div className="mt-4 text-center">
+          <a href="#" className="text-xs text-gray-400 hover:text-white transition-colors">Talk to Sales →</a>
+        </div>
+      )}
     </GlowCard>
   );
+
+  if (popular) {
+    return (
+      <div className="relative p-[1px] rounded-[25px] bg-gradient-to-b from-blue-500 via-violet-500 to-blue-500/0 h-full scale-105">
+        <div className="h-full rounded-[24px] overflow-hidden bg-[#050818]">
+          {CardContent}
+        </div>
+      </div>
+    );
+  }
+
+  return CardContent;
 });
 
 PricingCard.displayName = 'PricingCard';
@@ -79,10 +101,11 @@ export function Pricing() {
   const entPrice = useMemo(() => getPrice(currency, 'enterprise', billingCycle), [currency, billingCycle]);
 
   return (
-    <section id="pricing" className="py-24 relative">
+    <section id="pricing" className="py-20 md:py-28 relative bg-[#050818] border-t border-white/[0.04]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <p className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">Pricing</p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
             Simple, transparent pricing.
           </h2>
@@ -125,12 +148,13 @@ export function Pricing() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-center">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
           <PricingCard 
             name="Starter"
             price={starterPrice}
             currency={currency}
             billingCycle={billingCycle}
+            description="Perfect for small teams getting started"
             features={[
               '5 Active workflows',
               '1,000 runs per month',
@@ -145,6 +169,7 @@ export function Pricing() {
             currency={currency}
             billingCycle={billingCycle}
             popular={true}
+            description="The complete platform for growing businesses"
             features={[
               'Unlimited workflows',
               '50,000 runs per month',
@@ -159,6 +184,7 @@ export function Pricing() {
             price={entPrice}
             currency={currency}
             billingCycle={billingCycle}
+            description="Custom scale for mission-critical workflows"
             features={[
               'Unlimited everything',
               'Custom integrations',

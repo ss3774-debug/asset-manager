@@ -14,7 +14,7 @@ const queryClient = new QueryClient();
 
 function LandingPage() {
   return (
-    <div className="min-h-[100dvh] w-full flex flex-col bg-background text-foreground font-sans">
+    <div className="dark min-h-[100dvh] w-full flex flex-col bg-[#050818] text-white font-sans">
       <Navbar />
       <main className="flex-1">
         <Hero />
@@ -31,10 +31,10 @@ function LandingPage() {
 
 function NotFound() {
   return (
-    <div className="min-h-[100dvh] flex flex-col items-center justify-center bg-background text-foreground">
+    <div className="dark min-h-[100dvh] flex flex-col items-center justify-center bg-[#050818] text-white font-sans">
       <h1 className="text-4xl font-bold mb-4">404 - Not Found</h1>
       <p className="text-gray-400">The page you're looking for doesn't exist.</p>
-      <a href="/" className="mt-8 px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors">
+      <a href="/" className="mt-8 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-colors">
         Go Home
       </a>
     </div>

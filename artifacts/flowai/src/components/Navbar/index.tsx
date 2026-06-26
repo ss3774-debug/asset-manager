@@ -14,11 +14,13 @@ export function Navbar() {
     }
   };
 
+  const navLinks = ['Features', 'Pricing', 'Testimonials', 'Contact'];
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-background/70 backdrop-blur-xl border-b border-white/10 py-3 shadow-lg' 
+          ? 'bg-[#050818]/80 backdrop-blur-2xl border-b border-white/[0.06] py-3 shadow-lg' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -34,17 +36,20 @@ export function Navbar() {
                 <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="text-xl font-bold tracking-tight gradient-text" aria-hidden="true">FlowAI</span>
+            <span className="text-xl font-bold tracking-tight text-white" aria-hidden="true">
+              Flow<span style={{ background: 'linear-gradient(135deg, #60a5fa, #a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>AI</span>
+            </span>
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
-            {['Features', 'Pricing', 'Testimonials'].map((item) => (
+            {navLinks.map((item) => (
               <button 
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                className="relative text-sm font-medium text-gray-300 hover:text-white transition-colors group"
               >
                 {item}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </nav>
@@ -57,7 +62,7 @@ export function Navbar() {
           </div>
 
           <button 
-            className="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+            className="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded z-50 relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle mobile menu"
             aria-expanded={mobileMenuOpen}
@@ -74,32 +79,30 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div 
         id="mobile-nav"
-        className={`md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300 overflow-hidden ${
-          mobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden fixed inset-0 z-40 bg-[#050818]/95 backdrop-blur-2xl transition-all duration-300 flex flex-col justify-center items-center ${
+          mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden={!mobileMenuOpen}
-        inert={!mobileMenuOpen}
+        {...(!mobileMenuOpen ? { inert: true } : {})}
       >
-        <div className="flex flex-col p-4 gap-4">
-          {['Features', 'Pricing', 'Testimonials'].map((item) => (
+        <div className="flex flex-col items-center gap-8 w-full px-6">
+          {navLinks.map((item) => (
             <button 
               key={item}
               onClick={() => scrollToSection(item.toLowerCase())}
-              className="text-left text-base font-medium text-gray-300 hover:text-white py-2 px-4 rounded-lg hover:bg-white/5 transition-colors"
+              className="text-3xl font-bold text-gray-300 hover:text-white transition-colors"
             >
               {item}
             </button>
           ))}
-          <div className="h-px w-full bg-white/10 my-2" />
-          <div className="flex flex-col gap-3 px-4 pb-4">
-            <button className="text-left text-base font-medium text-gray-300 hover:text-white py-2">
-              Sign In
-            </button>
-            <Button className="w-full">Start Free Trial</Button>
-          </div>
+          <div className="w-full h-px bg-white/[0.08] my-4" />
+          <button className="text-xl font-medium text-gray-300 hover:text-white mb-4">
+            Sign In
+          </button>
+          <Button className="w-full max-w-xs" size="lg">Start Free Trial</Button>
         </div>
       </div>
     </header>
