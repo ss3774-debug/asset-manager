@@ -1,0 +1,474 @@
+You are a Senior Staff Frontend Engineer, UI/UX Designer, Performance Engineer, and Accessibility Expert. Your task is to build a **production-ready, premium SaaS landing page** for a fictional AI-powered workflow automation platform called **FlowAI**.
+
+# Project Overview
+
+**Product Name:** FlowAI
+
+**Tagline:** *Automate your business workflows with intelligent AI.*
+
+**Product Description:**
+FlowAI is an AI-powered workflow automation platform that helps businesses automate repetitive processes, process documents with AI, integrate data from hundreds of services, generate intelligent insights, monitor workflows in real time, and collaborate seamlessly across teams.
+
+The final website should feel comparable to the quality of **Stripe, Linear, Vercel, Notion AI, OpenAI, and Raycast**. It should look like a premium startup homepage built by an experienced product design team—not a template.
+
+---
+
+# Tech Stack
+
+* React 19+
+* Vite
+* Tailwind CSS
+* React Hooks
+* Native CSS animations & transitions
+* Web Animations API (if needed)
+
+**Do NOT use:**
+
+* Framer Motion
+* Shadcn/UI
+* Radix UI
+* Headless UI
+* Material UI
+* Bootstrap
+* Chakra UI
+* Any pre-built animation/UI libraries
+
+---
+
+# Overall Design Language
+
+Create an elegant, futuristic dark theme featuring:
+
+* Glassmorphism
+* Aurora gradients
+* Animated gradient backgrounds
+* Neon blue and purple glow accents
+* Floating blurred decorative shapes
+* Large rounded corners (20–32px)
+* Premium spacing using an 8-point spacing system
+* Beautiful typography with responsive scaling
+* Elegant shadows
+* Soft borders with subtle transparency
+* High-end SaaS dashboard visuals
+* Smooth hover interactions
+* Modern premium buttons with animated gradients
+* Floating UI elements
+* Subtle animated backgrounds
+* Minimal but luxurious aesthetic
+
+The website should immediately communicate trust, innovation, and premium quality.
+
+---
+
+# Functional Requirements
+
+The website must be:
+
+* Fully responsive (mobile, tablet, desktop)
+* Production-ready
+* GitHub-ready
+* Cleanly structured
+* Highly reusable
+* SEO optimized
+* Accessible
+* Fast loading
+* Performance optimized
+
+---
+
+# Folder Structure
+
+Organize the project professionally.
+
+Example:
+
+src/
+components/
+Navbar/
+Hero/
+TrustedCompanies/
+Features/
+Pricing/
+Testimonials/
+CTA/
+Footer/
+UI/
+
+hooks/
+
+utils/
+
+data/
+
+assets/
+
+styles/
+
+App.jsx
+
+main.jsx
+
+Use modular reusable components throughout.
+
+---
+
+# SEO Requirements
+
+Include complete SEO metadata.
+
+* Meta title
+* Meta description
+* Open Graph tags
+* Twitter cards
+* Canonical URL
+* Proper heading hierarchy
+* Semantic HTML
+
+The semantic structure must use:
+
+<header>
+
+<main>
+
+<section>
+
+<footer>
+
+All important content should be immediately available in the HTML for SEO.
+
+---
+
+# Accessibility Requirements
+
+Implement accessibility throughout.
+
+* Proper ARIA labels
+* Keyboard navigation
+* Visible focus states
+* Alt text for images
+* Accessible buttons
+* Accessible forms
+* Proper contrast ratios
+* Screen-reader friendly structure
+
+---
+
+# Page Structure
+
+## 1. Sticky Navbar
+
+Include:
+
+* FlowAI logo
+* Features
+* Pricing
+* Testimonials
+* Contact
+* Gradient "Start Free Trial" CTA button
+
+Navbar should:
+
+* Stick to the top
+* Have glassmorphism
+* Blur background while scrolling
+* Animate smoothly
+* Collapse into an accessible hamburger menu on mobile
+
+---
+
+## 2. Hero Section
+
+Create an impressive hero section featuring:
+
+Headline:
+
+**Automate Every Workflow. Powered by AI.**
+
+Supporting text explaining FlowAI.
+
+Two CTA buttons:
+
+* Start Free Trial
+* Watch Demo
+
+On the right:
+
+Design a beautiful floating AI dashboard mockup including:
+
+* Workflow builder
+* AI automation nodes
+* Real-time analytics charts
+* Team activity feed
+* Automation status indicators
+* Notification cards
+
+Background should contain:
+
+* Aurora gradients
+* Animated glowing blobs
+* Subtle grid pattern
+* Floating particles
+* Decorative gradient circles
+
+Include a smooth animated scroll indicator.
+
+---
+
+## 3. Trusted By
+
+Section title:
+
+**Trusted by innovative teams worldwide**
+
+Display 10 fictional company logos.
+
+Implement an infinite CSS marquee animation.
+
+The animation should be smooth and seamless.
+
+---
+
+## 4. Features Section (Responsive Bento Grid)
+
+### Desktop
+
+Create a modern asymmetric Bento Grid with premium feature cards.
+
+Features:
+
+* AI Workflow Builder
+* Smart Document Processing
+* 200+ Integrations
+* Real-Time Analytics
+* AI Knowledge Assistant
+* Enterprise Security
+* Team Collaboration
+* Predictive AI Insights
+
+Each card includes:
+
+* Icon
+* Title
+* Description
+* Gradient accents
+* Hover lift
+* Soft glow
+* Animated border
+* Active highlighting
+
+### Mobile
+
+Automatically transform the Bento Grid into an Accordion.
+
+IMPORTANT:
+
+The currently active feature card must remain selected when switching between desktop and mobile layouts (state persistence).
+
+---
+
+## 5. Pricing Section
+
+Create three pricing plans:
+
+### Starter
+
+### Professional
+
+### Enterprise
+
+Include:
+
+* Monthly / Annual billing toggle
+* Currency selector
+
+Currencies:
+
+* USD
+* INR
+* EUR
+
+Pricing must come from a multidimensional configuration object.
+
+Example:
+
+pricing = {
+USD:{
+starter:29,
+professional:79,
+enterprise:199
+},
+INR:{
+starter:1999,
+professional:5999,
+enterprise:14999
+},
+EUR:{
+starter:25,
+professional:69,
+enterprise:179
+}
+}
+
+Annual pricing MUST NOT be hardcoded.
+
+Always compute dynamically using:
+
+annual = monthly × 12 × 0.8
+
+Changing currency or billing should update ONLY the displayed price.
+
+Avoid unnecessary parent component re-renders.
+
+Use memoization wherever appropriate.
+
+---
+
+## 6. Testimonials
+
+Display elegant testimonial cards.
+
+Each includes:
+
+* Profile image
+* Name
+* Company
+* Rating
+* Review
+
+Cards should feature:
+
+* Glassmorphism
+* Subtle hover lift
+* Glow effects
+* Smooth transitions
+
+---
+
+## 7. CTA Banner
+
+Create a premium full-width gradient banner.
+
+Headline:
+
+**Ready to automate everything with AI?**
+
+Supporting text.
+
+Primary CTA:
+
+**Start Free Trial**
+
+---
+
+## 8. Footer
+
+Include:
+
+* Logo
+* Navigation links
+* Social icons
+* Newsletter subscription field
+* Privacy Policy
+* Terms
+* Support
+* Copyright
+
+Responsive layout.
+
+---
+
+# Motion & Interaction Requirements
+
+Use only:
+
+* CSS transitions
+* CSS keyframes
+* Native Web Animations API
+
+Animation timings:
+
+* Hover animations: 150–200ms ease-out
+* Layout transitions: 300–400ms ease-in-out
+* Initial page animation completes within 500ms
+
+Buttons:
+
+* Gradient animation
+* Glow on hover
+* Slight scale effect
+
+Cards:
+
+* Lift slightly
+* Soft shadow expansion
+* Optional 3D tilt using CSS transforms
+
+Dashboard:
+
+* Live status pulses
+* Animated graphs
+* Floating notification badges
+
+---
+
+# Performance Requirements
+
+Optimize for Lighthouse 95+.
+
+Implement:
+
+* Lazy loading for non-critical assets
+* Memoized components using React.memo
+* useMemo
+* useCallback
+* Avoid anonymous functions inside JSX
+* Avoid unnecessary re-renders
+* Reusable utility classes
+* Optimized images
+* Reduced DOM depth
+* Efficient state management
+* Fast initial rendering
+
+---
+
+# Code Quality Requirements
+
+Write production-quality code.
+
+The project should feature:
+
+* Clean architecture
+* Reusable components
+* Dynamic rendering
+* Data-driven UI
+* Maintainable folder structure
+* Proper comments where helpful
+* Consistent naming conventions
+* No duplicated logic
+* No hardcoded UI data except configuration objects
+* Responsive Tailwind utility classes
+* Premium spacing and typography system
+
+---
+
+# Final Polish
+
+Before finishing, review the entire project as a senior frontend engineer and improve:
+
+* Visual hierarchy
+* Typography
+* Glassmorphism
+* Gradients
+* Shadows
+* Hover effects
+* Button interactions
+* Decorative backgrounds
+* Dashboard realism
+* Spacing consistency
+* Mobile responsiveness
+* Accessibility
+* Performance
+* SEO
+* Code organization
+
+Remove anything that looks generic or template-based. The final result should resemble a modern, premium SaaS landing page worthy of a frontend design competition and comparable in quality to Stripe, Linear, Vercel, OpenAI, and Notion AI.

@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "FlowAI Landing Page"
+version = "1.0.0"
+id = "artifacts/flowai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22244
+
+[services.development]
+run = "pnpm --filter @workspace/flowai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/flowai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/flowai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22244"
+BASE_PATH = "/"
